@@ -7,5 +7,6 @@ namespace SchoolProject.Service.Abstracts
         Task<Department> GetDepartmentById(int id);
         Task<string> AddDepartmentAsync(Department department);
         Task<bool> IsDepartmentNameExsit(string name);
+        Task<List<Department>> GetDepartmentsAsync();
     }
 }

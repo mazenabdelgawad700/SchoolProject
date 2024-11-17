@@ -13,7 +13,8 @@ using System.Linq.Expressions;
 namespace SchoolProject.Core.Features.Departments.Queries.Handlers
 {
     internal class DepartmentQueryHandler : ResponseHandler,
-        IRequestHandler<GetDepartmentByIdQuery, Response<GetDepartmentByIdResponse>>
+        IRequestHandler<GetDepartmentByIdQuery, Response<GetDepartmentByIdResponse>>,
+        IRequestHandler<GetDepartmentsQuery, Response<List<GetDepartmentsResponse>>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResourcesLocalization> _localizer;
@@ -56,6 +57,16 @@ namespace SchoolProject.Core.Features.Departments.Queries.Handlers
             mapping.StudentList = paginatedList;
 
             return Success(mapping);
+        }
+
+        public async Task<Response<List<GetDepartmentsResponse>>> Handle(GetDepartmentsQuery request, CancellationToken cancellationToken)
+        {
+            var departments = await _departmentService.GetDepartmentsAsync();
+            var departmentsMapping = _mapper.Map<List<GetDepartmentsResponse>>(departments);
+            var result = Success(departmentsMapping);
+            result.Meta = new { departmentsMapping.Count };
+
+            return result;
         }
         #endregion
     }

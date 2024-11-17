@@ -25,6 +25,17 @@ namespace SchoolProject.Service.Implementaion
                 return "Exist";
             }
         }
+        public async Task<List<Department>> GetDepartmentsAsync()
+        {
+            try
+            {
+                return await _departmentRepository.GetDepartmentsAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+        }
         public async Task<Department> GetDepartmentById(int id)
         {
             try

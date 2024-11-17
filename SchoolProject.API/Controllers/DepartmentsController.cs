@@ -37,5 +37,18 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [HttpGet(Router.DepartmentRouting.List)]
+        public async Task<IActionResult> GetDepartmentsAsync()
+        {
+            try
+            {
+                var response = await Mediator.Send(new GetDepartmentsQuery());
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
     }
 }
