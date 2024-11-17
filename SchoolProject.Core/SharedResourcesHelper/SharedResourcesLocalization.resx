@@ -147,8 +147,8 @@
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
-  <data name="UserNameAlreadyInUse" xml:space="preserve">
-    <value>UserNameAlreadyInUse</value>
+  <data name="ItemAlreadyExist" xml:space="preserve">
+    <value>ItemAlreadyExist</value>
   </data>
   <data name="UnAuthorized" xml:space="preserve">
     <value>UnAuthorized</value>

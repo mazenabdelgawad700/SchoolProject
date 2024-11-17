@@ -46,9 +46,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
                     (key, CancellationToken) =>
                     !await _studentService.IsStudentNameUsed(key)
                 )
-                .WithMessage(_localizer[LocalizationSharedResourcesKeys.UserNameAlreadyInUse]);
-
-            // Valdiate the departement id
+                .WithMessage(_localizer[LocalizationSharedResourcesKeys.ItemAlreadyExist]);
         }
     }
 }

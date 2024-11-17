@@ -12,6 +12,19 @@ namespace SchoolProject.Service.Implementaion
         {
             _departmentRepository = departmentRepository;
         }
+        public async Task<string> AddDepartmentAsync(Department department)
+        {
+            try
+            {
+                await _departmentRepository.AddAsync(department);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "Exist";
+            }
+        }
         public async Task<Department> GetDepartmentById(int id)
         {
             try
@@ -30,6 +43,25 @@ namespace SchoolProject.Service.Implementaion
             {
                 Console.WriteLine(ex.Message);
                 return null!;
+            }
+        }
+        public async Task<bool> IsDepartmentNameExsit(string name)
+        {
+            try
+            {
+                var department = await _departmentRepository.GetTableNoTracking()
+                    .Where(d => d.DName.Equals(name)).FirstOrDefaultAsync();
+
+                if (department is not null)
+                    return true;
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
             }
         }
     }

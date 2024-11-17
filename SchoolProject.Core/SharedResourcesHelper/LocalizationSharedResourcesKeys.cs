@@ -15,6 +15,6 @@
         public const string MinLengthOfNameis3 = "MinLengthOfNameis3";
         public const string MaxLengthOfNameis50 = "MaxLengthOfNameis50";
         public const string UnprocessableEntity = "UnprocessableEntity";
-        public const string UserNameAlreadyInUse = "UserNameAlreadyInUse";
+        public const string ItemAlreadyExist = "ItemAlreadyExist";
     }
 }

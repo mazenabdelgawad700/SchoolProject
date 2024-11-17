@@ -147,8 +147,8 @@
   <data name="Phone" xml:space="preserve">
     <value>رقم الهاتف يجب أن يكون مصري</value>
   </data>
-  <data name="UserNameAlreadyInUse" xml:space="preserve">
-    <value>اسم المستخدم قيد الاستخدام </value>
+  <data name="ItemAlreadyExist" xml:space="preserve">
+    <value>االعنصر قيد الاستخدام </value>
   </data>
   <data name="UnAuthorized" xml:space="preserve">
     <value>الوصول غير المصرح به للصفحة الحالية</value>

@@ -141,19 +141,19 @@
   <data name="NotEmpty" xml:space="preserve">
     <value>Can not be empty</value>
   </data>
-  <data name="MinLenghtOfNameis3" xml:space="preserve">
+  <data name="MinLengthOfNameis3" xml:space="preserve">
     <value>the minimum length name is 3 characters</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>The phone number must be egyptian </value>
   </data>
-  <data name="UserNameAlreadyInUse" xml:space="preserve">
-    <value>User name already in use</value>
+  <data name="ItemAlreadyExist" xml:space="preserve">
+    <value>Item already in use</value>
   </data>
   <data name="UnAuthorized" xml:space="preserve">
     <value>Unauthorized Access for the current page</value>
   </data>
-  <data name="MaxLenghtOfNameis50" xml:space="preserve">
+  <data name="MaxLengthOfNameis50" xml:space="preserve">
     <value>Max length of name is 50 character</value>
   </data>
 </root>
