@@ -102,5 +102,18 @@ namespace SchoolProject.Service.Implementaion
                 return false;
             }
         }
+        public async Task<string> DeleteDepartmentAsync(int id)
+        {
+            try
+            {
+                await _departmentRepository.DeleteAsync(id);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "Error";
+            }
+        }
     }
 }

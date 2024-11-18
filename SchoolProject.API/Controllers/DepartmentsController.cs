@@ -64,5 +64,18 @@ namespace SchoolProject.API.Controllers
                 throw new Exception($"{ex.Message}");
             }
         }
+        [HttpDelete(Router.DepartmentRouting.Delete)]
+        public async Task<IActionResult> DeleteDepartmentAsync([FromRoute] int id)
+        {
+            try
+            {
+                var response = await Mediator.Send(new DeleteDepartmentCommand(id));
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
     }
 }
