@@ -9,6 +9,7 @@ namespace SchoolProject.Core.Mapping.DepartmentMapping
             GetDepartmentByIdMapping();
             AddDepartmentMapping();
             GetDepartmentsMapping();
+            UpdateDepartmentMapping();
         }
     }
 }

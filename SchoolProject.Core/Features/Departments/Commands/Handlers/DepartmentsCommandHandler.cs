@@ -10,7 +10,8 @@ using SchoolProject.Service.Abstracts;
 namespace SchoolProject.Core.Features.Departments.Commands.Handlers
 {
     public class DepartmentsCommandHandler : ResponseHandler,
-        IRequestHandler<AddDepartmentCommand, Response<string>>
+        IRequestHandler<AddDepartmentCommand, Response<string>>,
+        IRequestHandler<UpdateDepartmentCommand, Response<string>>
     {
         #region Fields
         private readonly IMapper _mapper;
@@ -37,6 +38,16 @@ namespace SchoolProject.Core.Features.Departments.Commands.Handlers
                 return UnprocessableEntity<string>();
             else
                 return BadRequest<string>();
+        }
+        public async Task<Response<string>> Handle(UpdateDepartmentCommand request, CancellationToken cancellationToken)
+        {
+            var deparmentMapping = _mapper.Map<Department>(request);
+            var updateDepartmentResult = await _departmentService.UpdateDepartmentAsync(deparmentMapping);
+            if (updateDepartmentResult == "Success")
+                return Updated<string>();
+
+            else
+                return NotFound<string>();
         }
         #endregion
 

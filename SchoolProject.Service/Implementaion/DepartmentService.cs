@@ -75,5 +75,32 @@ namespace SchoolProject.Service.Implementaion
                 return false;
             }
         }
+        public async Task<string> UpdateDepartmentAsync(Department department)
+        {
+            try
+            {
+                await _departmentRepository.UpdateAsync(department);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return "Error";
+            }
+        }
+        public async Task<bool> IsDepartmentNameUsedButNotTheSameDepartmentAsync(string name, int id)
+        {
+            try
+            {
+                var department = await _departmentRepository.GetTableNoTracking().Where(d => d.DName!.Equals(name) && d.DID != id).FirstOrDefaultAsync();
+
+                return department is not null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

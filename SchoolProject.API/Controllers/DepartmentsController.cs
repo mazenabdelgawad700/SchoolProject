@@ -50,5 +50,19 @@ namespace SchoolProject.API.Controllers
                 throw new Exception($"{ex.Message}");
             }
         }
+
+        [HttpPut(Router.DepartmentRouting.Update)]
+        public async Task<IActionResult> UpdateDepartmentAsync([FromBody] UpdateDepartmentCommand command)
+        {
+            try
+            {
+                var response = await Mediator.Send(command);
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
     }
 }
