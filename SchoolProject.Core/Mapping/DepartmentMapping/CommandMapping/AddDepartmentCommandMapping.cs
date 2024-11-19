@@ -9,7 +9,7 @@ namespace SchoolProject.Core.Mapping.DepartmentMapping
         {
             CreateMap<AddDepartmentCommand, Department>()
                 .ForMember(dest => dest.DName, opt => opt.MapFrom(src => src.DepartmentName))
-                .ForMember(dest => dest.InsManager, opt => opt.MapFrom(src => src.DepartmentManager));
+                .ForMember(dest => dest.InsManager, opt => opt.MapFrom(src => src.DepartmentManagerId));
         }
     }
 }

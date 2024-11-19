@@ -6,6 +6,6 @@ namespace SchoolProject.Core.Features.Departments.Commands.Models
     public class AddDepartmentCommand : IRequest<Response<string>>
     {
         public string DepartmentName { get; set; }
-        public string? DepartmentManager { get; set; }
+        public int? DepartmentManagerId { get; set; }
     }
 }

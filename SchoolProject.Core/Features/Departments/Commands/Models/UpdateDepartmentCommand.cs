@@ -7,6 +7,6 @@ namespace SchoolProject.Core.Features.Departments.Commands.Models
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }
-        public string? DepartmentManager { get; set; }
+        public int? DepartmentManagerId { get; set; }
     }
 }
