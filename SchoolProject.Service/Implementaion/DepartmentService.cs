@@ -115,5 +115,18 @@ namespace SchoolProject.Service.Implementaion
                 return "Error";
             }
         }
+        public async Task<bool> IsDepartmentIdExist(int id)
+        {
+            try
+            {
+                var department = await _departmentRepository.GetByIdAsync(id);
+                return department is not null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

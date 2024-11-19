@@ -64,7 +64,8 @@ public class StudentService : IStudentService
         }
         catch (Exception ex)
         {
-            return "Exist";
+            Console.WriteLine(ex.Message);
+            return "Error";
         }
     }
     public async Task<bool> IsStudentNameUsed(string name)
@@ -101,13 +102,16 @@ public class StudentService : IStudentService
     }
     public async Task<bool> DeleteStudentAsync(int id)
     {
+        var transaction = _studentRepository.BeginTransaction();
         try
         {
             await _studentRepository.DeleteAsync(id);
+            await transaction.CommitAsync();
             return true;
         }
         catch
         {
+            await transaction.RollbackAsync();
             return false;
         }
     }

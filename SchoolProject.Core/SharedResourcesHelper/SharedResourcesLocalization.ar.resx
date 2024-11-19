@@ -156,4 +156,7 @@
   <data name="MaxLengthOfNameis50" xml:space="preserve">
     <value>الحد الأقصى لطول الاسم هو 50 حرفًا</value>
   </data>
+  <data name="DepartmentIdNotFound" xml:space="preserve">
+    <value>لم يتم العثور على القسم</value>
+  </data>
 </root>

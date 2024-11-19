@@ -11,5 +11,6 @@ namespace SchoolProject.Service.Abstracts
         Task<string> UpdateDepartmentAsync(Department department);
         Task<bool> IsDepartmentNameUsedButNotTheSameDepartmentAsync(string name, int id);
         Task<string> DeleteDepartmentAsync(int id);
+        Task<bool> IsDepartmentIdExist(int id);
     }
 }

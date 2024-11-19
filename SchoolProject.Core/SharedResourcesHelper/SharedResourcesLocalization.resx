@@ -156,4 +156,7 @@
   <data name="MaxLengthOfNameis50" xml:space="preserve">
     <value>MaxLenghtOfNameis50</value>
   </data>
+  <data name="DepartmentIdNotFound" xml:space="preserve">
+    <value>DepartmentIdNotFound</value>
+  </data>
 </root>

@@ -16,5 +16,6 @@
         public const string MaxLengthOfNameis50 = "MaxLengthOfNameis50";
         public const string UnprocessableEntity = "UnprocessableEntity";
         public const string ItemAlreadyExist = "ItemAlreadyExist";
+        public const string DepartmentIdNotFound = "DepartmentIdNotFound";
     }
 }

@@ -36,10 +36,8 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
 
             if (addStudentResult == "Success")
                 return Created(addStudentResult);
-            else if (addStudentResult == "Exist")
-                return UnprocessableEntity<string>();
-            else
-                return BadRequest<string>();
+
+            return BadRequest<string>();
         }
 
         public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)

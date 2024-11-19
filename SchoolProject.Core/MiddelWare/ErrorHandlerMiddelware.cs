@@ -52,22 +52,9 @@ public class ErrorHandlerMiddleware
 
                     break;
                 case Exception e:
-                    //if (e.Message.Contains("already"))
-                    //{
-                    //    responseModel.StatusCode = HttpStatusCode.BadRequest;
-                    //    response.StatusCode = (int)HttpStatusCode.BadRequest;
-
-                    //    break;
-                    //}
                     responseModel.StatusCode = HttpStatusCode.BadRequest;
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
                     break;
-                //responseModel.Message = e.Message;
-                //responseModel.Message += e.InnerException == null ? "" : "\n" + e.InnerException.Message;
-
-                //responseModel.StatusCode = HttpStatusCode.InternalServerError;
-                //response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                //break;
                 default:
                     // unhandled error
                     responseModel.StatusCode = HttpStatusCode.InternalServerError;

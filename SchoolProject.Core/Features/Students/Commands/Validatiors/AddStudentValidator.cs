@@ -9,16 +9,24 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
     public class AddStudentValidator : AbstractValidator<AddStudentCommand>
     {
 
+        #region Fields
         private readonly IStudentService _studentService;
+        private readonly IDepartmentService _departmentService;
         private readonly IStringLocalizer<SharedResourcesLocalization> _localizer;
-        public AddStudentValidator(IStudentService studentService, IStringLocalizer<SharedResourcesLocalization> localizer)
+        #endregion
+
+        #region Constructors
+        public AddStudentValidator(IStudentService studentService, IStringLocalizer<SharedResourcesLocalization> localizer, IDepartmentService departmentService)
         {
             _studentService = studentService;
+            _departmentService = departmentService;
             _localizer = localizer;
             ApplyValidationRules();
             ApplyCustomValidationRules();
         }
+        #endregion
 
+        #region Handlers
         public void ApplyValidationRules()
         {
             RuleFor(e => e.Name)
@@ -47,6 +55,15 @@ namespace SchoolProject.Core.Features.Students.Commands.Validatiors
                     !await _studentService.IsStudentNameUsed(key)
                 )
                 .WithMessage(_localizer[LocalizationSharedResourcesKeys.ItemAlreadyExist]);
+
+            RuleFor(e => e.DepartementId)
+               .MustAsync(async
+                   (key, CancellationToken) =>
+                   await _departmentService.IsDepartmentIdExist(key)
+               )
+               .WithMessage(_localizer[LocalizationSharedResourcesKeys.DepartmentIdNotFound]);
         }
+        #endregion
+
     }
 }
