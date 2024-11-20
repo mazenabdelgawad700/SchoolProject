@@ -15,32 +15,6 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Instructor> Instructor { get; set; }
     public DbSet<Ins_Subject> Ins_Subject { get; set; }
 
-    //protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    base.OnModelCreating(modelBuilder);
-
-    //    Random random = new Random();
-
-    //    var randomDepartmentId = random.Next(1, 5);
-
-    //    List<Student> students = new List<Student>();
-    //    for (int i = 2; i <= 5000; i++)
-    //    {
-    //        var newStudent = new Student
-    //        {
-    //            StudID = i * -1,
-    //            Name = $"Student - {i}",
-    //            Phone = $"01165981{i}",
-    //            DID = randomDepartmentId,
-    //            Address = $"Address - {i}"
-    //        };
-    //        students.Add(newStudent);
-    //    }
-
-
-    //    modelBuilder.Entity<Student>().HasData(students);
-    //}
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
