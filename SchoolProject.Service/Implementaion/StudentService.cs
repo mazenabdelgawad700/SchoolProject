@@ -20,6 +20,11 @@ public class StudentService : IStudentService
     #endregion
 
     #region Handle Functions
+    /// <summary>
+    /// Get All students asynchronous
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public async Task<List<Student>> GetStudentsAsync()
     {
         try
