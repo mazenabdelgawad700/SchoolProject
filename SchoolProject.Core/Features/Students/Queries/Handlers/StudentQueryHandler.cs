@@ -55,7 +55,6 @@ internal class StudentQueryHandler : ResponseHandler,
              e => new
              GetStudentPaginatedListResponse(e.StudID, e.Name!, e.Address!, e.Department!.DName!);
 
-        //var studentsQuerable = _studentService.GetStudentsAsQuerable();
         var studentFilterQuerable = _studentService.GetStudentFilterPaginatedQuerable(request.OrderBy, request.Search!);
         var paginatedResult = await studentFilterQuerable
                                     .Select(expression)

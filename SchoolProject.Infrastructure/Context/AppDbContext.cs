@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolProject.Domain.Entities;
+using SchoolProject.Domain.Identity;
 
 namespace SchoolProject.Infrastructure.Context;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<User>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     public DbSet<Student> Students { get; set; }
@@ -41,6 +43,8 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<DepartmentSubject>()
             .HasKey(ds => new { ds.DID, ds.SubID });
 
@@ -50,7 +54,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<StudentSubject>()
            .HasKey(ds => new { ds.StudID, ds.SubID });
 
-        // Configure the one to many relationship between the instructors and supervisor
         modelBuilder.Entity<Instructor>()
             .HasOne(s => s.Supervisor)
             .WithMany(i => i.Instructors)
