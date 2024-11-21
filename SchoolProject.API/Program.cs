@@ -31,7 +31,8 @@ public class Program
 
         builder.Services.AddInfrastructureDependancies()
             .AddServiceDependancies()
-            .AddCoreDependancies();
+            .AddCoreDependancies()
+            .AddServiceRegisteration();
         #endregion
 
 
