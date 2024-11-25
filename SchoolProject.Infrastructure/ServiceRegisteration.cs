@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using SchoolProject.Domain.Identity;
+using SchoolProject.Domain.Entities.Identity;
 using SchoolProject.Infrastructure.Context;
 
 namespace SchoolProject.Infrastructure

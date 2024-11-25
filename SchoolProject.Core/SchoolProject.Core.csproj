@@ -21,4 +21,11 @@
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="8.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\User\Commands\Hanlders\" />
+    <Folder Include="Features\User\Commands\Models\" />
+    <Folder Include="Features\User\Queries\Hanlders\" />
+    <Folder Include="Features\User\Queries\Models\" />
+  </ItemGroup>
+
 </Project>

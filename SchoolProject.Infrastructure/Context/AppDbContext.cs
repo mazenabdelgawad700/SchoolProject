@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Domain.Entities;
-using SchoolProject.Domain.Identity;
+using SchoolProject.Domain.Entities.Identity;
 
 namespace SchoolProject.Infrastructure.Context;
 
@@ -14,6 +14,7 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<StudentSubject> StudentSubjects { get; set; }
     public DbSet<Instructor> Instructor { get; set; }
     public DbSet<Ins_Subject> Ins_Subject { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
