@@ -48,7 +48,7 @@ namespace SchoolProject.Core.Features.User.Commands.Validators
 
             RuleFor(e => e.ConfirmPassword)
                 .NotEmpty().WithMessage(_localizer[LocalizationSharedResourcesKeys.NotEmpty])
-                .Matches(x => x.Password)
+                .Equal(x => x.Password)
                 .WithMessage(_localizer[LocalizationSharedResourcesKeys.MatchingPasswords]);
         }
 
