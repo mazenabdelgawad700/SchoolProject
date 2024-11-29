@@ -27,7 +27,7 @@ public class Program
                 )
         );
 
-        #region Dependency Injection
+        #region Add Services To Dependency Injection
 
         builder.Services.AddInfrastructureDependancies()
             .AddServiceDependancies()

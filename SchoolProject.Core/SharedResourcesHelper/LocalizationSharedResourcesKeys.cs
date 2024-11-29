@@ -17,5 +17,7 @@
         public const string UnprocessableEntity = "UnprocessableEntity";
         public const string ItemAlreadyExist = "ItemAlreadyExist";
         public const string DepartmentIdNotFound = "DepartmentIdNotFound";
+        public const string InvalidEmailAddress = "InvalidEmailAddress";
+        public const string MatchingPasswords = "MatchingPasswords";
     }
 }

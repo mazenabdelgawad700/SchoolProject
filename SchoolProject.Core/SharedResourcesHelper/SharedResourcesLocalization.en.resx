@@ -159,4 +159,10 @@
   <data name="DepartmentIdNotFound" xml:space="preserve">
     <value>Department Not Found</value>
   </data>
+  <data name="InvalidEmailAddress" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="MatchingPasswords" xml:space="preserve">
+    <value>Password and confirmation password must be identical. Please check and try again.</value>
+  </data>
 </root>
