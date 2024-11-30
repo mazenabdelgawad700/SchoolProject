@@ -53,7 +53,11 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
             if (createdResult.Succeeded)
                 return Created<string>(_stringLocalizer[LocalizationSharedResourcesKeys.Created]);
 
-            return UnprocessableEntity<string>(createdResult.Errors.ToString()!);
+            if (createdResult.Errors.Any())
+                return UnprocessableEntity<string>(createdResult.Errors.FirstOrDefault()!.Description);
+            else
+                return UnprocessableEntity<string>();
+
         }
         #endregion 
     }

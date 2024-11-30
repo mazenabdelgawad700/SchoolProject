@@ -9,7 +9,7 @@ namespace SchoolProject.API.Controllers
     public class ApplicationUserController : AppControllerBase
     {
         [HttpPost(Router.UserRouting.Create)]
-        public async Task<IActionResult> AddUserAsync([FromQuery] AddUserCommand command)
+        public async Task<IActionResult> AddUserAsync([FromBody] AddUserCommand command)
         {
             try
             {
