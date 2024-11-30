@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchoolProject.Domain.Entities.Identity
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         [MaxLength(100)]
         public string FullName { get; set; } = string.Empty;

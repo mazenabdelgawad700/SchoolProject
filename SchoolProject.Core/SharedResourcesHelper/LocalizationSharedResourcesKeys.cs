@@ -19,5 +19,7 @@
         public const string DepartmentIdNotFound = "DepartmentIdNotFound";
         public const string InvalidEmailAddress = "InvalidEmailAddress";
         public const string MatchingPasswords = "MatchingPasswords";
+        public const string EmailAlreadyUsed = "EmailAlreadyUsed";
+        public const string UserNameAlreadyExist = "UserNameAlreadyExist";
     }
 }

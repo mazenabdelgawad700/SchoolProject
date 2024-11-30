@@ -165,4 +165,10 @@
   <data name="MatchingPasswords" xml:space="preserve">
     <value>Password and confirmation password must be identical. Please check and try again.</value>
   </data>
+  <data name="EmailAlreadyUsed" xml:space="preserve">
+    <value>Email Already Used</value>
+  </data>
+  <data name="UserNameAlreadyExist" xml:space="preserve">
+    <value>User Name Already Exist</value>
+  </data>
 </root>

@@ -165,4 +165,10 @@
   <data name="MatchingPasswords" xml:space="preserve">
     <value>تأكيد كلمة المرور لا يطابق كلمة المرور. يرجى التحقق والمحاولة مجددًا</value>
   </data>
+  <data name="EmailAlreadyUsed" xml:space="preserve">
+    <value>البريد الإلكتروني المستخدم بالفعل</value>
+  </data>
+  <data name="UserNameAlreadyExist" xml:space="preserve">
+    <value>اسم المستخدم موجود بالفعل</value>
+  </data>
 </root>

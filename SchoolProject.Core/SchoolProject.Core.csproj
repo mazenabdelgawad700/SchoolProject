@@ -22,8 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\User\Queries\Hanlders\" />
-    <Folder Include="Features\User\Queries\Models\" />
+    <Folder Include="Features\ApplicationUser\Queries\Hanlders\" />
+    <Folder Include="Features\ApplicationUser\Queries\Models\" />
+    <Folder Include="Mapping\ApplicationUserMapping\QueryMapping\" />
   </ItemGroup>
 
 </Project>

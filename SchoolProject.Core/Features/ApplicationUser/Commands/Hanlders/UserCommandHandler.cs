@@ -3,11 +3,11 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
-using SchoolProject.Core.Features.IdentityUser.Commands.Models;
+using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.SharedResourcesHelper;
 using SchoolProject.Domain.Entities.Identity;
 
-namespace SchoolProject.Core.Features.IdentityUser.Commands.Hanlders
+namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
 {
     internal class UserCommandHandler : ResponseHandler,
         IRequestHandler<AddUserCommand, Response<string>>
@@ -36,14 +36,24 @@ namespace SchoolProject.Core.Features.IdentityUser.Commands.Hanlders
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
-            if (user is null)
-                return BadRequest<string>();
+            if (user is not null)
+                return BadRequest<string>
+                    (_stringLocalizer[LocalizationSharedResourcesKeys.EmailAlreadyUsed]);
 
-            // Confirm Email
+            var userByUserName = await _userManager.FindByNameAsync(request.UserName);
 
+            if (userByUserName is not null)
+                return BadRequest<string>
+                    (_stringLocalizer[LocalizationSharedResourcesKeys.UserNameAlreadyExist]);
 
-            // Temp
-            throw new NotImplementedException();
+            var identityUser = _mapper.Map<User>(request);
+
+            var createdResult = await _userManager.CreateAsync(identityUser, request.Password);
+
+            if (createdResult.Succeeded)
+                return Created<string>(_stringLocalizer[LocalizationSharedResourcesKeys.Created]);
+
+            return UnprocessableEntity<string>(createdResult.Errors.ToString()!);
         }
         #endregion 
     }

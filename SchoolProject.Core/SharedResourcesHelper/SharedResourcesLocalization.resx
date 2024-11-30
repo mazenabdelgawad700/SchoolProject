@@ -165,4 +165,10 @@
   <data name="MatchingPasswords" xml:space="preserve">
     <value>MatchingPasswords</value>
   </data>
+  <data name="EmailAlreadyUsed" xml:space="preserve">
+    <value>EmailAlreadyUsed</value>
+  </data>
+  <data name="UserNameAlreadyExist" xml:space="preserve">
+    <value>UserNameAlreadyExist</value>
+  </data>
 </root>

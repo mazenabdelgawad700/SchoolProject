@@ -36,24 +36,23 @@ public class ResponseHandler
             Message = _localizer[LocalizationSharedResourcesKeys.UnAuthorized]
         };
     }
-    public Response<T> BadRequest<T>()
+    public Response<T> BadRequest<T>(string message = null!)
     {
         return new Response<T>()
         {
             StatusCode = HttpStatusCode.BadRequest,
             Succeeded = false,
-            //Message = "Bad Request"
-            Message = _localizer[LocalizationSharedResourcesKeys.BadRequest]
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.BadRequest]
         };
     }
-    public Response<T> UnprocessableEntity<T>()
+    public Response<T> UnprocessableEntity<T>(string message = null!)
     {
         return new Response<T>()
         {
             StatusCode = HttpStatusCode.UnprocessableEntity,
             Succeeded = false,
             //Message = "UnprocessableEntity"
-            Message = _localizer[LocalizationSharedResourcesKeys.UnprocessableEntity]
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.UnprocessableEntity]
         };
     }
     public Response<T> NotFound<T>()

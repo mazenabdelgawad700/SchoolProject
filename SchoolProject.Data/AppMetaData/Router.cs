@@ -32,5 +32,18 @@
             public const string Delete = Prefix + WithId;
             public const string Paginated = Prefix + "Paginated";
         }
+
+        public static class UserRouting
+        {
+            // Api/V1/Student
+            private const string Prefix = Rule + "User/";
+            public const string List = Prefix + "List";
+            public const string GetById = Prefix + "Id";
+            public const string Create = Prefix;
+            public const string Update = Prefix;
+            //Api/V1/Student
+            public const string Delete = Prefix + WithId;
+            public const string Paginated = Prefix + "Paginated";
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SchoolProject.Core.Bases;
 
-namespace SchoolProject.Core.Features.IdentityUser.Commands.Models
+namespace SchoolProject.Core.Features.ApplicationUser.Commands.Models
 {
     public class AddUserCommand : IRequest<Response<string>>
     {
@@ -12,6 +12,6 @@ namespace SchoolProject.Core.Features.IdentityUser.Commands.Models
         public string ConfirmPassword { get; set; }
         public string? Address { get; set; }
         public string? Country { get; set; }
-        public string? Phone { get; set; }
+        public string? PhoneNumber { get; set; }
     }
 }

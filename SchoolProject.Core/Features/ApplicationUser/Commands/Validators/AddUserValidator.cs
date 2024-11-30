@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolProject.Core.Features.IdentityUser.Commands.Models;
+using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.SharedResourcesHelper;
 
-namespace SchoolProject.Core.Features.IdentityUser.Commands.Validators
+namespace SchoolProject.Core.Features.ApplicationUser.Commands.Validators
 {
     public class AddUserValidator : AbstractValidator<AddUserCommand>
     {
@@ -42,9 +42,9 @@ namespace SchoolProject.Core.Features.IdentityUser.Commands.Validators
                 .EmailAddress().WithMessage(_localizer[LocalizationSharedResourcesKeys.InvalidEmailAddress]);
 
             RuleFor(e => e.Password)
-                .NotEmpty().WithMessage(_localizer[LocalizationSharedResourcesKeys.NotEmpty])
-                .Matches
-                (@"""^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\[\]\{\}@#\$%&\*\^])[A-Za-z\d\[\]\{\}@#\$%&\*\^]{8,}$""gm");
+                .NotEmpty().WithMessage(_localizer[LocalizationSharedResourcesKeys.NotEmpty]);
+            //.Matches
+            //(@"""^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\[\]\{\}@#\$%&\*\^])[A-Za-z\d\[\]\{\}@#\$%&\*\^]{8,}$""gm");
 
             RuleFor(e => e.ConfirmPassword)
                 .NotEmpty().WithMessage(_localizer[LocalizationSharedResourcesKeys.NotEmpty])
