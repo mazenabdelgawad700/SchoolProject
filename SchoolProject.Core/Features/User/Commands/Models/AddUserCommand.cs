@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SchoolProject.Core.Bases;
 
-namespace SchoolProject.Core.Features.User.Commands.Models
+namespace SchoolProject.Core.Features.IdentityUser.Commands.Models
 {
     public class AddUserCommand : IRequest<Response<string>>
     {

@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using SchoolProject.Core.Features.User.Commands.Models;
+using SchoolProject.Core.Features.IdentityUser.Commands.Models;
 using SchoolProject.Core.SharedResourcesHelper;
 
-namespace SchoolProject.Core.Features.User.Commands.Validators
+namespace SchoolProject.Core.Features.IdentityUser.Commands.Validators
 {
     public class AddUserValidator : AbstractValidator<AddUserCommand>
     {
@@ -16,7 +16,7 @@ namespace SchoolProject.Core.Features.User.Commands.Validators
         {
             _localizer = localizer;
             ApplyValidationRules();
-            ApplyCustromValidationRules();
+            //ApplyCustromValidationRules();
         }
         #endregion
 
