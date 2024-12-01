@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.ApplicationUser.Queries.Models;
@@ -51,8 +52,8 @@ namespace SchoolProject.Core.Features.ApplicationUser.Queries.Hanlders
 
         public async Task<Response<GetApplicationUserByIdResponse>> Handle(GetApplicationUserByIdQuery request, CancellationToken cancellationToken)
         {
-            // Notice -> it asks for id of type string ?!
-            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+
+            var user = await _userManager.Users.Where(x => x.Id == request.Id).FirstOrDefaultAsync();
 
             if (user is null)
                 return BadRequest<GetApplicationUserByIdResponse>($"No user with id: {request.Id}");
