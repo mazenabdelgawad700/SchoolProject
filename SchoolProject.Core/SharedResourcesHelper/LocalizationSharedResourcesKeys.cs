@@ -21,5 +21,6 @@
         public const string MatchingPasswords = "MatchingPasswords";
         public const string EmailAlreadyUsed = "EmailAlreadyUsed";
         public const string UserNameAlreadyExist = "UserNameAlreadyExist";
+        public const string ExpectationFailed = "ExpectationFailed";
     }
 }

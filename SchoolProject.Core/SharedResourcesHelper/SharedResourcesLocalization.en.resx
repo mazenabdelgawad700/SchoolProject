@@ -171,4 +171,7 @@
   <data name="UserNameAlreadyExist" xml:space="preserve">
     <value>User Name Already Exist</value>
   </data>
+  <data name="ExpectationFailed" xml:space="preserve">
+    <value>Something wrong happened, please try again</value>
+  </data>
 </root>

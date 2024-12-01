@@ -171,4 +171,7 @@
   <data name="UserNameAlreadyExist" xml:space="preserve">
     <value>اسم المستخدم موجود بالفعل</value>
   </data>
+  <data name="ExpectationFailed" xml:space="preserve">
+    <value>لقد حدث خطأ ما، يرجى المحاولة مرة أخرى</value>
+  </data>
 </root>

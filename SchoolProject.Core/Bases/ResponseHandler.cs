@@ -36,6 +36,15 @@ public class ResponseHandler
             Message = _localizer[LocalizationSharedResourcesKeys.UnAuthorized]
         };
     }
+    public Response<T> Failed<T>()
+    {
+        return new Response<T>()
+        {
+            StatusCode = HttpStatusCode.ExpectationFailed,
+            Succeeded = false,
+            Message = _localizer[LocalizationSharedResourcesKeys.ExpectationFailed]
+        };
+    }
     public Response<T> BadRequest<T>(string message = null!)
     {
         return new Response<T>()
