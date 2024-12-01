@@ -12,7 +12,8 @@ using SchoolProject.Domain.Entities.Identity;
 namespace SchoolProject.Core.Features.ApplicationUser.Queries.Hanlders
 {
     internal class ApplicationUserQueryHandler : ResponseHandler,
-        IRequestHandler<GetPaginatedUserListQuery, PaginatedResult<GetPaginatedUserListResponse>>
+        IRequestHandler<GetPaginatedUserListQuery, PaginatedResult<GetPaginatedUserListResponse>>,
+        IRequestHandler<GetApplicationUserByIdQuery, Response<GetApplicationUserByIdResponse>>
     {
 
         #region Fields
@@ -46,6 +47,18 @@ namespace SchoolProject.Core.Features.ApplicationUser.Queries.Hanlders
 
             // Temporarly solution
             return null;
+        }
+
+        public async Task<Response<GetApplicationUserByIdResponse>> Handle(GetApplicationUserByIdQuery request, CancellationToken cancellationToken)
+        {
+            // Notice -> it asks for id of type string ?!
+            var user = await _userManager.FindByIdAsync(request.Id.ToString());
+
+            if (user is null)
+                return BadRequest<GetApplicationUserByIdResponse>($"No user with id: {request.Id}");
+
+            var mappedUser = _mapper.Map<GetApplicationUserByIdResponse>(user);
+            return Success<GetApplicationUserByIdResponse>(mappedUser);
         }
         #endregion
     }

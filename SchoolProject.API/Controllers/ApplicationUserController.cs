@@ -28,9 +28,22 @@ namespace SchoolProject.API.Controllers
         {
             try
             {
-                var response = await Mediator
-                    .Send(query);
+                var response = await Mediator.Send(query);
                 return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
+
+        [HttpGet(Router.UserRouting.GetById)]
+        public async Task<IActionResult> GetUserByIdAsync([FromQuery] GetApplicationUserByIdQuery query)
+        {
+            try
+            {
+                var response = await Mediator.Send(query);
+                return ResponseResult(response);
             }
             catch (Exception ex)
             {
