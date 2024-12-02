@@ -12,7 +12,8 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
 {
     internal class UserCommandHandler : ResponseHandler,
         IRequestHandler<AddUserCommand, Response<string>>,
-        IRequestHandler<UpdateApplicationUserCommand, Response<string>>
+        IRequestHandler<UpdateApplicationUserCommand, Response<string>>,
+        IRequestHandler<DeleteApplicationUserCommand, Response<string>>
     {
 
         #region Fields
@@ -31,7 +32,6 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
             _userManager = userManager;
         }
         #endregion
-
 
         #region Handlers
         public async Task<Response<string>> Handle(AddUserCommand request, CancellationToken cancellationToken)
@@ -80,6 +80,22 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
             if (!result.Succeeded) return BadRequest<string>(_stringLocalizer[LocalizationSharedResourcesKeys.ExpectationFailed]);
 
             return Success((string)_stringLocalizer[LocalizationSharedResourcesKeys.Updated]);
+        }
+
+        public async Task<Response<string>> Handle(DeleteApplicationUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            if (user is null) return NotFound<string>();
+
+            // @TODO - Delete every thing is related to the user
+
+            var deletionResult = await _userManager.DeleteAsync(user);
+
+            if (deletionResult.Succeeded)
+                return Deleted<string>();
+
+            return Failed<string>();
         }
         #endregion
     }

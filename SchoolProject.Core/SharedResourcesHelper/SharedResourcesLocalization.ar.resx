@@ -174,4 +174,7 @@
   <data name="ExpectationFailed" xml:space="preserve">
     <value>لقد حدث خطأ ما، يرجى المحاولة مرة أخرى</value>
   </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>تم الحذف بنجاح</value>
+  </data>
 </root>

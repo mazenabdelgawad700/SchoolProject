@@ -101,7 +101,6 @@ public class ResponseHandler
         {
             StatusCode = HttpStatusCode.OK,
             Succeeded = true,
-            //Message = "Deleted",
             Message = _localizer[LocalizationSharedResourcesKeys.Deleted],
         };
     }

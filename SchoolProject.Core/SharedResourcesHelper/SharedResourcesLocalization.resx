@@ -174,4 +174,7 @@
   <data name="ExpectationFailed" xml:space="preserve">
     <value>ExpectationFailed</value>
   </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
 </root>
