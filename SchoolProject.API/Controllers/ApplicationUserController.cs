@@ -78,5 +78,19 @@ namespace SchoolProject.API.Controllers
                 throw new Exception($"{ex.Message}");
             }
         }
+
+        [HttpPut($"{Router.UserRouting.Update}Password")]
+        public async Task<IActionResult> UpdateUserPasswordAsync([FromBody] ChangeApplicationUserPasswordCommand command)
+        {
+            try
+            {
+                var response = await Mediator.Send(command);
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"{ex.Message}");
+            }
+        }
     }
 }
