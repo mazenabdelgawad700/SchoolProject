@@ -32,7 +32,7 @@ public class Program
         builder.Services.AddInfrastructureDependancies()
             .AddServiceDependancies()
             .AddCoreDependancies()
-            .AddServiceRegisteration();
+            .AddServiceRegisteration(builder.Configuration);
         #endregion
 
 
@@ -86,6 +86,7 @@ public class Program
 
         app.UseCors(CORS);
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();

@@ -40,5 +40,12 @@
             public const string Delete = Prefix + WithId;
             public const string Paginated = Prefix + "Paginated";
         }
+        public static class AuthenticationRouting
+        {
+            // Api/V1/Authentication
+            private const string Prefix = Rule + "Authentication/";
+            public const string SignIn = "SignIn";
+
+        }
     }
 }
