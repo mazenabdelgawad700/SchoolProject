@@ -1,9 +1,10 @@
 ﻿using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Helpers;
 
 namespace SchoolProject.Service.Abstracts
 {
     public interface IAuthenticationService
     {
-        public Task<string> GetJWTToken(User user);
+        public JwtAuthResponse GetJWTToken(User user);
     }
 }

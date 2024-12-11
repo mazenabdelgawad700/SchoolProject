@@ -15,6 +15,7 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int, Iden
     public DbSet<Instructor> Instructor { get; set; }
     public DbSet<Ins_Subject> Ins_Subject { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<UserRefreshToken> UserRefreshToken { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using SchoolProject.Core.Bases;
+using SchoolProject.Domain.Helpers;
 
 namespace SchoolProject.Core.Features.Authentication.Command.Models
 {
-    public class SignInCommand : IRequest<Response<string>>
+    public class SignInCommand : IRequest<Response<JwtAuthResponse>>
     {
         public string UserName { get; set; }
         public string Password { get; set; }

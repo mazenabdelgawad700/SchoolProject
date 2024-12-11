@@ -35,7 +35,6 @@ public class Program
             .AddServiceRegisteration(builder.Configuration);
         #endregion
 
-
         #region Localization
         builder.Services.AddControllersWithViews();
         builder.Services.AddLocalization(opt => opt.ResourcesPath = "");

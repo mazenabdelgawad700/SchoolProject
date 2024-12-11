@@ -5,12 +5,13 @@ using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authentication.Command.Models;
 using SchoolProject.Core.SharedResourcesHelper;
 using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Helpers;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Authentication.Command.Handlers
 {
     internal class AuthenticationCommandHandler : ResponseHandler,
-        IRequestHandler<SignInCommand, Response<string>>
+        IRequestHandler<SignInCommand, Response<JwtAuthResponse>>
     {
 
         #region Fields
@@ -34,21 +35,21 @@ namespace SchoolProject.Core.Features.Authentication.Command.Handlers
 
 
         #region Handlers
-        public async Task<Response<string>> Handle(SignInCommand request, CancellationToken cancellationToken)
+        public async Task<Response<JwtAuthResponse>> Handle(SignInCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user is null)
-                return NotFound<string>();
+                return NotFound<JwtAuthResponse>();
 
             var signInResult = _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (signInResult.IsCompletedSuccessfully)
             {
-                var accessToken = await _authenticationService.GetJWTToken(user);
-                return Success(accessToken);
+                var result = _authenticationService.GetJWTToken(user);
+                return Success(result);
             }
 
-            return BadRequest<string>();
+            return BadRequest<JwtAuthResponse>();
         }
         #endregion
     }
