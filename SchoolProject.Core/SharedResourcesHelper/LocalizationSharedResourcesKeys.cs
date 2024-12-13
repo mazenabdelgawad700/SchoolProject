@@ -22,5 +22,8 @@
         public const string EmailAlreadyUsed = "EmailAlreadyUsed";
         public const string UserNameAlreadyExist = "UserNameAlreadyExist";
         public const string ExpectationFailed = "ExpectationFailed";
+        public const string LoginTimeOut = "LoginTimeOut";
+        public const string TokenIsNotExpired = "TokenIsNotExpired";
+        public const string InvalidUserId = "InvalidUserId";
     }
 }

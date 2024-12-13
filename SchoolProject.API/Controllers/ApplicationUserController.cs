@@ -19,7 +19,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -33,7 +33,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -47,7 +47,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -61,7 +61,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -75,7 +75,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
@@ -89,7 +89,7 @@ namespace SchoolProject.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
     }

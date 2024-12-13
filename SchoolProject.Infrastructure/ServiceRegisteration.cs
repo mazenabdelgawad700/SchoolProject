@@ -61,7 +61,7 @@ namespace SchoolProject.Infrastructure
                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.Secret)),
                    ValidAudience = jwtSettings.Audience,
                    ValidateAudience = jwtSettings.ValidateAudience,
-                   ValidateLifetime = jwtSettings.ValidateLifetime,
+                   ValidateLifetime = jwtSettings.ValidateLifeTime,
                };
            });
 

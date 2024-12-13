@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Authentication\Command\Responses\" />
-    <Folder Include="Features\Authentication\Query\" />
   </ItemGroup>
 
 </Project>

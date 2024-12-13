@@ -21,7 +21,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
 
@@ -35,7 +35,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
 
@@ -49,7 +49,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
     [HttpPost(Router.StudentRouting.Create)]
@@ -62,7 +62,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
     [HttpPut(Router.StudentRouting.Update)]
@@ -75,7 +75,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
     [HttpDelete(Router.StudentRouting.Delete)]
@@ -87,7 +87,7 @@ public class StudentController : AppControllerBase
         }
         catch (Exception ex)
         {
-            throw new Exception($"{ex.Message}");
+            throw new Exception(ex.Message);
         }
     }
     #endregion

@@ -44,7 +44,9 @@
         {
             // Api/V1/Authentication
             private const string Prefix = Rule + "Authentication/";
-            public const string SignIn = "SignIn";
+            public const string SignIn = Prefix + "SignIn/";
+            public const string RefreshToken = Prefix + "Refresh-Token/";
+            public const string ValidateToken = Prefix + "Validate-Token/";
 
         }
     }

@@ -26,14 +26,22 @@ public class ResponseHandler
             Message = _localizer[LocalizationSharedResourcesKeys.Success],
         };
     }
-    public Response<T> Unauthorized<T>()
+    public Response<T> Unauthorized<T>(string message = null!)
     {
         return new Response<T>()
         {
             StatusCode = HttpStatusCode.Unauthorized,
             Succeeded = true,
-            //Message = "UnAuthorized"
-            Message = _localizer[LocalizationSharedResourcesKeys.UnAuthorized]
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.UnAuthorized]
+        };
+    }
+    public Response<T> LoginTimeOut<T>(string message = null!)
+    {
+        return new Response<T>()
+        {
+            StatusCode = HttpStatusCode.Forbidden,
+            Succeeded = true,
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.LoginTimeOut]
         };
     }
     public Response<T> Failed<T>()
@@ -64,14 +72,13 @@ public class ResponseHandler
             Message = message ?? _localizer[LocalizationSharedResourcesKeys.UnprocessableEntity]
         };
     }
-    public Response<T> NotFound<T>()
+    public Response<T> NotFound<T>(string message = null!)
     {
         return new Response<T>()
         {
             StatusCode = HttpStatusCode.NotFound,
             Succeeded = false,
-            //Message = "Not Found",
-            Message = _localizer[LocalizationSharedResourcesKeys.NotFound]
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.NotFound]
         };
     }
     public Response<T> Created<T>(T entity)

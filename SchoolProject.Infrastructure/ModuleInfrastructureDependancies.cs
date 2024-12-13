@@ -14,6 +14,7 @@ public static class ModuleInfrastructureDependancies
         services.AddTransient<IDepartmentRepository, DepartmentRepository>();
         services.AddTransient<ISubjectsRepository, SubjectsRepository>();
         services.AddTransient<IInstructorRepository, InstructorRepository>();
+        services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
 
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
 

@@ -177,4 +177,13 @@
   <data name="Deleted" xml:space="preserve">
     <value>Deleted</value>
   </data>
+  <data name="LoginTimeOut" xml:space="preserve">
+    <value>LoginTimeOut</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>TokenIsNotExpired</value>
+  </data>
+  <data name="InvalidUserId" xml:space="preserve">
+    <value>InvalidUserId</value>
+  </data>
 </root>

@@ -177,4 +177,13 @@
   <data name="Deleted" xml:space="preserve">
     <value>تم الحذف بنجاح</value>
   </data>
+  <data name="LoginTimeOut" xml:space="preserve">
+    <value>من فضلك قم بتسجيل الدخول</value>
+  </data>
+  <data name="TokenIsNotExpired" xml:space="preserve">
+    <value>لم تنتهي جلستك بعد</value>
+  </data>
+  <data name="InvalidUserId" xml:space="preserve">
+    <value>معرف المستخدم غير صالح</value>
+  </data>
 </root>
