@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.Features.ApplicationUser.Queries.Models;
 using SchoolProject.Domain.AppMetaData;
+using SchoolProject.Domain.Enums;
 
 namespace SchoolProject.API.Controllers
 {
@@ -24,6 +26,7 @@ namespace SchoolProject.API.Controllers
         }
 
         [HttpGet(Router.UserRouting.Paginated)]
+        [Authorize(Roles = nameof(RolesEnum.Admin))]
         public async Task<IActionResult> GetPaginatedUserListAsync([FromQuery] GetPaginatedUserListQuery query)
         {
             try
@@ -37,6 +40,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet(Router.UserRouting.GetById)]
         public async Task<IActionResult> GetUserByIdAsync([FromQuery] GetApplicationUserByIdQuery query)
         {
@@ -51,6 +55,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut(Router.UserRouting.Update)]
         public async Task<IActionResult> UpdateUserAsync([FromBody] UpdateApplicationUserCommand command)
         {
@@ -65,6 +70,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete(Router.UserRouting.Delete)]
         public async Task<IActionResult> DeleteUserAsync([FromRoute] int id)
         {
@@ -79,6 +85,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut($"{Router.UserRouting.Update}Password")]
         public async Task<IActionResult> UpdateUserPasswordAsync([FromBody] ChangeApplicationUserPasswordCommand command)
         {

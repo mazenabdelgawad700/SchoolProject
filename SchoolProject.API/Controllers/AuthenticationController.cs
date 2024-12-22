@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authentication.Command.Models;
 using SchoolProject.Core.Features.Authentication.Query.Models;
@@ -22,6 +23,8 @@ namespace SchoolProject.API.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [Authorize]
         [HttpPost(Router.AuthenticationRouting.RefreshToken)]
         public async Task<IActionResult> GetRefreshTokenAsync([FromForm] RefreshTokenCommand command)
         {
@@ -36,6 +39,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost(Router.AuthenticationRouting.ValidateToken)]
         public async Task<IActionResult> ValidateTokenAsync([FromForm] ValidateRefreshTokenQuery query)
         {

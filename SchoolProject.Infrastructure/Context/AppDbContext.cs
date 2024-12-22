@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Domain.Entities;
 using SchoolProject.Domain.Entities.Identity;
+using System.Reflection;
 namespace SchoolProject.Infrastructure.Context;
 
-public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     public DbSet<Student> Students { get; set; }
@@ -20,21 +21,6 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int, Iden
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
-        modelBuilder.Entity<DepartmentSubject>()
-            .HasKey(ds => new { ds.DID, ds.SubID });
-
-        modelBuilder.Entity<Ins_Subject>()
-           .HasKey(ds => new { ds.InsId, ds.SubID });
-
-        modelBuilder.Entity<StudentSubject>()
-           .HasKey(ds => new { ds.StudID, ds.SubID });
-
-        modelBuilder.Entity<Instructor>()
-            .HasOne(s => s.Supervisor)
-            .WithMany(i => i.Instructors)
-            .HasForeignKey(s => s.SupervisorId)
-            .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
-
 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SchoolProject.Core.Bases;
+using SchoolProject.Infrastructure.Exceptions;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
@@ -50,6 +51,18 @@ public class ErrorHandlerMiddleware
                 case SecurityTokenException:
                     responseModel.StatusCode = HttpStatusCode.BadRequest;
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    break;
+                case FailedToAddDefaultRoleException:
+                    responseModel.StatusCode = HttpStatusCode.InternalServerError;
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    break;
+                case FailedToAddUserException:
+                    responseModel.StatusCode = HttpStatusCode.InternalServerError;
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    break;
+                case FailedToAddUserToRoleException:
+                    responseModel.StatusCode = HttpStatusCode.InternalServerError;
+                    response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     break;
                 case Exception:
                     responseModel.StatusCode = HttpStatusCode.BadRequest;

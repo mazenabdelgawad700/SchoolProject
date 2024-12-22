@@ -25,5 +25,8 @@
         public const string LoginTimeOut = "LoginTimeOut";
         public const string TokenIsNotExpired = "TokenIsNotExpired";
         public const string InvalidUserId = "InvalidUserId";
+        public const string RoleExists = "RoleExists";
+        public const string RoleHasUsers = "RoleHasUsers";
+        public const string UserNotFound = "UserNotFound";
     }
 }

@@ -32,7 +32,9 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
 
             if (failures.Count != 0)
             {
-                var message = failures.Select(x => x.PropertyName + ": " + _localizer[x.ErrorMessage]).FirstOrDefault();
+                var message = failures.Select(x => _localizer[x.ErrorMessage]).FirstOrDefault();
+                if (message is null)
+                    throw new ArgumentNullException(nameof(message));
 
                 throw new ValidationException(message);
             }

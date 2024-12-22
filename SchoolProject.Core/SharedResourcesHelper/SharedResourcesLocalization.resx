@@ -186,4 +186,13 @@
   <data name="InvalidUserId" xml:space="preserve">
     <value>InvalidUserId</value>
   </data>
+  <data name="RoleExists" xml:space="preserve">
+    <value>RoleExists</value>
+  </data>
+  <data name="RoleHasUsers" xml:space="preserve">
+    <value>RoleHasUsers</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>UserNotFound</value>
+  </data>
 </root>

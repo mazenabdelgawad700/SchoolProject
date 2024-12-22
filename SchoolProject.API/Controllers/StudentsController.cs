@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Core.Features.Students.Queries.Models;
 using SchoolProject.Domain.AppMetaData;
+using SchoolProject.Domain.Enums;
 
 namespace SchoolProject.API.Controllers;
 
 [ApiController]
-//[Authorize]
+[Authorize(Roles = nameof(RolesEnum.Admin))]
 public class StudentController : AppControllerBase
 {
     #region Handle Functions

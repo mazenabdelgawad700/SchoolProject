@@ -54,6 +54,7 @@ namespace SchoolProject.Service.Implementaion
         }
         private async Task<(JwtSecurityToken, string)> GenerateJWTToken(User user)
         {
+
             var claims = await GetClaims(user);
             var jwtToken = new JwtSecurityToken(
                 _jwtSettings.Issuer,
@@ -83,13 +84,20 @@ namespace SchoolProject.Service.Implementaion
         }
         public async Task<List<Claim>> GetClaims(User user)
         {
+            var roles = await _userManager.GetRolesAsync(user);
             var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name,user.UserName),
-                new Claim(ClaimTypes.Email,user.Email),
-                new Claim(nameof(UserClaimModel.PhoneNumber), user.PhoneNumber),
-                new Claim(nameof(UserClaimModel.UserId), user.Id.ToString())
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(nameof(UserClaimModel.Id), user.Id.ToString())
             };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+            //var userClaims = await _userManager.GetClaimsAsync(user);
+            //claims.AddRange(userClaims);
+
             return claims;
         }
         public async Task<JwtAuthResponse> GetRefreshTokenAsync(User user, JwtSecurityToken jwtToken, DateTime? expiryDate, string refreshToken)
@@ -155,11 +163,12 @@ namespace SchoolProject.Service.Implementaion
                 return ("TokenIsNotExpired", null);
             }
 
-            var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == nameof(UserClaimModel.UserId))!.Value;
+            var userId = jwtToken.Claims.FirstOrDefault(x => x.Type == nameof(UserClaimModel.Id))!.Value;
             var userRefreshToken = await _refreshTokenRepository.GetTableNoTracking()
                                              .FirstOrDefaultAsync(x => x.Token == accessToken &&
                                                                      x.RefreshToken == refreshToken &&
-                                                                     x.UserId == int.Parse(userId));
+                                                                     x.UserId == int.Parse(userId)
+                                             );
             if (userRefreshToken == null)
             {
                 return ("RefreshTokenIsNotFound", null);

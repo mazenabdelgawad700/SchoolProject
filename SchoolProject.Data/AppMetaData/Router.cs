@@ -11,7 +11,7 @@
         {
             // Api/V1/Student
             private const string Prefix = Rule + "Student/";
-            public const string List = Prefix + "List";
+            public const string List = Prefix + "List/";
             public const string GetById = Prefix + WithId;
             public const string Create = Prefix;
             public const string Update = Prefix;
@@ -22,23 +22,23 @@
         {
             // Api/V1/Department
             private const string Prefix = Rule + "Department/";
-            public const string List = Prefix + "List";
-            public const string GetById = Prefix + "Id";
+            public const string List = Prefix + "List/";
+            public const string GetById = Prefix + "Id/";
             public const string Create = Prefix;
             public const string Update = Prefix;
             public const string Delete = Prefix + WithId;
-            public const string Paginated = Prefix + "Paginated";
+            public const string Paginated = Prefix + "Paginated/";
         }
         public static class UserRouting
         {
             // Api/V1/User
             private const string Prefix = Rule + "User/";
-            public const string List = Prefix + "List";
-            public const string GetById = Prefix + "Id";
-            public const string Create = Prefix;
-            public const string Update = Prefix;
-            public const string Delete = Prefix + WithId;
-            public const string Paginated = Prefix + "Paginated";
+            public const string List = Prefix + "List/";
+            public const string GetById = Prefix + "Id/";
+            public const string Create = Prefix + "Add/";
+            public const string Update = Prefix + "Update/";
+            public const string Delete = Prefix + "Delete/" + WithId;
+            public const string Paginated = Prefix + "Paginated/";
         }
         public static class AuthenticationRouting
         {
@@ -48,6 +48,18 @@
             public const string RefreshToken = Prefix + "Refresh-Token/";
             public const string ValidateToken = Prefix + "Validate-Token/";
 
+        }
+        public static class AuthorizationRouting
+        {
+            // Api/V1/Authentication
+            private const string Prefix = Rule + "Authorization/";
+            public const string GetRolesList = Prefix + "Role/List/";
+            public const string GetRoleById = Prefix + "Role/{Id}/";
+            public const string AddRole = Prefix + "Role/Add/";
+            public const string UpdateRole = Prefix + "Role/Update/";
+            public const string DeleteRole = Prefix + "Role/Delete/";
+            public const string GetUserRolesList = Prefix + "Role/User-Roles-List/";
+            public const string UpdateUserRolesList = Prefix + "Role/Update/User-Roles/";
         }
     }
 }

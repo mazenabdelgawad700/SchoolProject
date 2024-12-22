@@ -1,6 +1,6 @@
 @SchoolProject.API_HostAddress = http://localhost:5037
 
-GET {{SchoolProject.API_HostAddress}}/weatherforecast/
+GET {{SchoolProject.API_HostAddress}}/schoolProject/
 Accept: application/json
 
 ###

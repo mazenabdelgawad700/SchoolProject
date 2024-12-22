@@ -7,6 +7,7 @@ using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.SharedResourcesHelper;
 using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Enums;
 
 namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
 {
@@ -51,13 +52,18 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Hanlders
 
             var identityUser = _mapper.Map<User>(request);
 
-            var createdResult = await _userManager.CreateAsync(identityUser, request.Password);
+            var createUserResult = await _userManager.CreateAsync(identityUser, request.Password);
 
-            if (createdResult.Succeeded)
+            var addUserToRole = await _userManager.AddToRoleAsync(identityUser, nameof(RolesEnum.User));
+
+            if (!addUserToRole.Succeeded)
+                return Failed<string>();
+
+            if (createUserResult.Succeeded)
                 return Created<string>(_stringLocalizer[LocalizationSharedResourcesKeys.Created]);
 
-            if (createdResult.Errors.Any())
-                return UnprocessableEntity<string>(createdResult.Errors.FirstOrDefault()!.Description);
+            if (createUserResult.Errors.Any())
+                return UnprocessableEntity<string>(createUserResult.Errors.FirstOrDefault()!.Description);
             else
                 return UnprocessableEntity<string>();
 

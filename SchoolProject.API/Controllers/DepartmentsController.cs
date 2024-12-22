@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Departments.Commands.Models;
 using SchoolProject.Core.Features.Departments.Queries.Models;
 using SchoolProject.Domain.AppMetaData;
+using SchoolProject.Domain.Enums;
 
 namespace SchoolProject.API.Controllers
 {
     [ApiController]
+    [Authorize(Roles = nameof(RolesEnum.Admin))]
     public class DepartmentsController : AppControllerBase
     {
         [HttpGet(Router.DepartmentRouting.GetById)]
@@ -23,6 +26,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize(Roles = nameof(RolesEnum.Admin))]
         [HttpPost(Router.DepartmentRouting.Create)]
         public async Task<IActionResult> AddDepartmentAsync([FromQuery] AddDepartmentCommand command)
         {
@@ -51,6 +55,7 @@ namespace SchoolProject.API.Controllers
             }
         }
 
+        [Authorize(Roles = nameof(RolesEnum.Admin))]
         [HttpPut(Router.DepartmentRouting.Update)]
         public async Task<IActionResult> UpdateDepartmentAsync([FromBody] UpdateDepartmentCommand command)
         {
@@ -64,6 +69,8 @@ namespace SchoolProject.API.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [Authorize(Roles = nameof(RolesEnum.Admin))]
         [HttpDelete(Router.DepartmentRouting.Delete)]
         public async Task<IActionResult> DeleteDepartmentAsync([FromRoute] int id)
         {

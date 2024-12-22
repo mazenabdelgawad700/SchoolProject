@@ -186,4 +186,13 @@
   <data name="InvalidUserId" xml:space="preserve">
     <value>معرف المستخدم غير صالح</value>
   </data>
+  <data name="RoleExists" xml:space="preserve">
+    <value>الترخيص موجود بالفعل</value>
+  </data>
+  <data name="RoleHasUsers" xml:space="preserve">
+    <value>الترخيص له مستخدمون، لا يمكنك حذفه</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>لم يتم العثور على المستخدم</value>
+  </data>
 </root>

@@ -1,16 +1,19 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SchoolProject.Core;
+using SchoolProject.Domain.Entities.Identity;
 using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Context;
+using SchoolProject.Infrastructure.Seeder;
 using SchoolProject.Service;
 using System.Globalization;
 namespace SchoolProject.API;
 
 public class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +70,16 @@ public class Program
         #endregion
 
         var app = builder.Build();
+
+        #region Add Data Seeders to DI
+        using (var scope = app.Services.CreateScope())
+        {
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>();
+            await RoleSeeder.SeedAsync(roleManager);
+            await UserSeeder.SeedAsync(userManager);
+        }
+        #endregion
 
         if (app.Environment.IsDevelopment())
         {
