@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using SchoolProject.Core.Bases;
-using SchoolProject.Domain.DTOs;
+using SchoolProject.Domain.Requests;
 
 namespace SchoolProject.Core.Features.Authorization.Commands.Models
 {

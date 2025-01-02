@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolProject.Domain.Entities;
-using SchoolProject.Domain.Helpers;
+using SchoolProject.Domain.Enums;
 using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Service.Abstracts;
 

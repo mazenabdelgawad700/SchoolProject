@@ -1,4 +1,4 @@
-﻿namespace SchoolProject.Domain.DTOs
+﻿namespace SchoolProject.Domain.Results
 {
     public class ManageUserRolesResponse
     {

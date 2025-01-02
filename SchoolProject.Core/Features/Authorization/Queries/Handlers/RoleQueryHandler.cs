@@ -6,8 +6,8 @@ using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
 using SchoolProject.Core.Features.Authorization.Queries.Responeses;
 using SchoolProject.Core.SharedResourcesHelper;
-using SchoolProject.Domain.DTOs;
 using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Results;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
@@ -81,7 +81,7 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
                         (_localizer[LocalizationSharedResourcesKeys.UserNotFound]);
 
                 ManageUserRolesResponse response = await
-                    _authorizationService.GetManageUserRolesData(user);
+                    _authorizationService.ManageUserRolesData(user);
 
                 if (response is null)
                     return Failed<ManageUserRolesResponse>();

@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using SchoolProject.Domain.DTOs;
 using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Helpers;
+using SchoolProject.Domain.Requests;
+using SchoolProject.Domain.Results;
 using SchoolProject.Infrastructure.Context;
 using SchoolProject.Service.Abstracts;
+using System.Security.Claims;
 
 namespace SchoolProject.Service.Implementaion
 {
@@ -95,7 +98,7 @@ namespace SchoolProject.Service.Implementaion
                 return "Failed";
             }
         }
-        public async Task<ManageUserRolesResponse> GetManageUserRolesData(User user)
+        public async Task<ManageUserRolesResponse> ManageUserRolesData(User user)
         {
             try
             {
@@ -248,6 +251,43 @@ namespace SchoolProject.Service.Implementaion
                 Console.WriteLine(ex.Message);
                 await transaction.RollbackAsync();
                 return "Error";
+            }
+        }
+        public async Task<ManageUserClaimsResults> ManageUserClaimsDataAsync(User user)
+        {
+            try
+            {
+                ManageUserClaimsResults response = new();
+                response.UserId = user.Id;
+
+                List<UserClaim> userClaimsList = [];
+
+                IList<Claim> userClaims = await _userManager.GetClaimsAsync(user);
+
+                foreach (Claim claim in ClaimStore.Claims)
+                {
+                    UserClaim userClaim = new()
+                    {
+                        Type = claim.Type
+                    };
+                    if (userClaims.Any(x => x.Type == claim.Type))
+                    {
+                        userClaim.Value = true;
+                    }
+                    else
+                    {
+                        userClaim.Value = false;
+                    }
+                    userClaimsList.Add(userClaim);
+                }
+                response.UserClaims = userClaimsList;
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null!;
             }
         }
         #endregion

@@ -1,5 +1,5 @@
 ﻿using SchoolProject.Domain.Entities;
-using SchoolProject.Domain.Helpers;
+using SchoolProject.Domain.Enums;
 
 namespace SchoolProject.Service.Abstracts;
 

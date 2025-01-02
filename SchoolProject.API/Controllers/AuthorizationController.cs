@@ -108,5 +108,19 @@ namespace SchoolProject.API.Controllers
             }
 
         }
+        [HttpGet(Router.AuthorizationRouting.ManageUserClaims)]
+        public async Task<IActionResult> ManageUserClaimsAsync([FromRoute] int userId)
+        {
+            try
+            {
+                var response = await Mediator.Send(new ManageUserClaimsQuery() { UserId = userId });
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }

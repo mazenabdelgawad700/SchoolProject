@@ -60,6 +60,9 @@
             public const string DeleteRole = Prefix + "Role/Delete/";
             public const string GetUserRolesList = Prefix + "Role/User-Roles-List/";
             public const string UpdateUserRolesList = Prefix + "Role/Update/User-Roles/";
+            // Claims
+            public const string ManageUserClaims = Prefix + "Claim/Manage-User-Claims/{userId}/";
         }
+
     }
 }

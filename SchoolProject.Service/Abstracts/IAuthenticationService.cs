@@ -1,5 +1,5 @@
 ﻿using SchoolProject.Domain.Entities.Identity;
-using SchoolProject.Domain.Helpers;
+using SchoolProject.Domain.Results;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace SchoolProject.Service.Abstracts
