@@ -28,5 +28,11 @@
         public const string RoleExists = "RoleExists";
         public const string RoleHasUsers = "RoleHasUsers";
         public const string UserNotFound = "UserNotFound";
+        public const string FailedToRemoveClaims = "FailedToRemoveClaims";
+        public const string FailedToGetClaims = "FailedToGetClaims";
+        public const string FailedToSelectClaims = "FailedToSelectClaims";
+        public const string FailedToUpdateClaims = "FailedToUpdateClaims";
+        public const string UpdateClaimsSuccessfully = "UpdateClaimsSuccessfully";
+        public const string ErrorDuringUpdatingClaims = "ErrorDuringUpdatingClaims";
     }
 }

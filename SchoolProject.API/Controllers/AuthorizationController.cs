@@ -122,5 +122,19 @@ namespace SchoolProject.API.Controllers
             }
 
         }
+        [HttpPut(Router.AuthorizationRouting.UpdateUserClaimsList)]
+        public async Task<IActionResult> UpdateUserClaimsAsync([FromBody] UpdateUserClaimsCommand command)
+        {
+            try
+            {
+                var response = await Mediator.Send(command);
+                return ResponseResult(response);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }

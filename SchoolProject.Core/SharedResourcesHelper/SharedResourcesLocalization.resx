@@ -195,4 +195,22 @@
   <data name="UserNotFound" xml:space="preserve">
     <value>UserNotFound</value>
   </data>
+  <data name="FailedToRemoveClaims" xml:space="preserve">
+    <value>FailedToRemoveClaims</value>
+  </data>
+  <data name="FailedToGetClaims" xml:space="preserve">
+    <value>FailedToGetClaims</value>
+  </data>
+  <data name="FailedToSelectClaims" xml:space="preserve">
+    <value>FailedToSelectClaims</value>
+  </data>
+  <data name="FailedToUpdateClaims" xml:space="preserve">
+    <value>FailedToUpdateClaims</value>
+  </data>
+  <data name="UpdateClaimsSuccessfully" xml:space="preserve">
+    <value>UpdateClaimsSuccessfully</value>
+  </data>
+  <data name="ErrorDuringUpdatingClaims" xml:space="preserve">
+    <value>ErrorDuringUpdatingClaims</value>
+  </data>
 </root>

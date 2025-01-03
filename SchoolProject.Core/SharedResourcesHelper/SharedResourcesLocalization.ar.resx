@@ -195,4 +195,22 @@
   <data name="UserNotFound" xml:space="preserve">
     <value>لم يتم العثور على المستخدم</value>
   </data>
+  <data name="FailedToRemoveClaims" xml:space="preserve">
+    <value>فشل في إزالة صلاحيات المستخدم</value>
+  </data>
+  <data name="FailedToGetClaims" xml:space="preserve">
+    <value>فشل في جلب صلاحيات المستخدم</value>
+  </data>
+  <data name="FailedToSelectClaims" xml:space="preserve">
+    <value>فشل في اختيار صلاحيات المستخدم</value>
+  </data>
+  <data name="FailedToUpdateClaims" xml:space="preserve">
+    <value>فشل في تحديث صلاحيات المستخدم</value>
+  </data>
+  <data name="UpdateClaimsSuccessfully" xml:space="preserve">
+    <value>تم تحديث صلاحيات المستخدم بنجاح</value>
+  </data>
+  <data name="ErrorDuringUpdatingClaims" xml:space="preserve">
+    <value>خطأ أثناء تحديث صلاحيات المستخدم</value>
+  </data>
 </root>

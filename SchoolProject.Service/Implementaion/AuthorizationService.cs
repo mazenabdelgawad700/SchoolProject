@@ -290,6 +290,51 @@ namespace SchoolProject.Service.Implementaion
                 return null!;
             }
         }
+        public async Task<string> UpdateUserClaimsAsync(UpdateUserClaimsRequest request)
+        {
+            IDbContextTransaction transaction = await _dpContext.Database.BeginTransactionAsync();
+            try
+            {
+                // Get User
+                User user = await _userManager.FindByIdAsync(request.UserId.ToString());
+                if (user is null)
+                    return "InvalidUserId";
+                // Get Old Claims
+                IList<Claim> oldClaims = await _userManager.GetClaimsAsync(user);
+                if (oldClaims is null)
+                    return "FailedToGetClaims";
+                // Remove Old Claims
+                IdentityResult removeClaimsResult = await _userManager.RemoveClaimsAsync(user, oldClaims);
+                if (!removeClaimsResult.Succeeded)
+                {
+                    await transaction.RollbackAsync();
+                    return "FailedToRemoveClaims";
+                }
+                // Select Claims with value True
+                List<Claim> selectedClaims = request.UserClaims
+                    .Where(x => x.Value == true)
+                    .Select(x => new Claim(x.Type, x.Value.ToString())).ToList();
+                if (selectedClaims is null)
+                    return "FailedToSelectClaims";
+                // Add Claims to user
+                IdentityResult addClaimsResult = await _userManager.AddClaimsAsync(user, selectedClaims);
+                // Validate adding process
+                if (!addClaimsResult.Succeeded)
+                {
+                    await transaction.RollbackAsync();
+                    return "FailedToRemoveClaims";
+                }
+                // return result
+                await transaction.CommitAsync();
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                await transaction.RollbackAsync();
+                return "Error";
+            }
+        }
         #endregion
     }
 }
