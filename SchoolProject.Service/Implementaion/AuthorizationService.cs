@@ -104,7 +104,6 @@ namespace SchoolProject.Service.Implementaion
             {
                 ManageUserRolesResponse response = new ManageUserRolesResponse();
                 List<UserRoles> rolesList = [];
-                IList<string> userRoles = await _userManager.GetRolesAsync(user);
                 List<Role> roles = await _roleManager.Roles.ToListAsync();
 
                 response.UserId = user.Id;
@@ -116,15 +115,20 @@ namespace SchoolProject.Service.Implementaion
                         Id = role.Id,
                         Name = role.Name!
                     };
-                    if (userRoles.Contains(role.Name))
+                    if (role is not null)
                     {
-                        currentUserRole.HasRole = true;
+                        if (await _userManager.IsInRoleAsync(user, role.Name!))
+                        {
+                            currentUserRole.HasRole = true;
+                        }
+                        else
+                        {
+                            currentUserRole.HasRole = false;
+                        }
+                        rolesList.Add(currentUserRole);
                     }
-                    else
-                    {
-                        currentUserRole.HasRole = false;
-                    }
-                    rolesList.Add(currentUserRole);
+                    Console.WriteLine("Can not get role");
+                    break;
                 }
                 response.UserRoles = rolesList;
                 return response;

@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SchoolProject.Domain.Entities.Identity;
+using SchoolProject.Domain.Enums;
 using SchoolProject.Domain.Helpers;
 using SchoolProject.Infrastructure.Context;
 using System.Text;
@@ -95,6 +96,24 @@ namespace SchoolProject.Infrastructure
             Array.Empty<string>()
             }
            });
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(ClaimsEnum.CreateStudent.ToString(), policy =>
+                {
+                    policy.RequireClaim(ClaimsConstants.CreateStudent, "True");
+                });
+
+                options.AddPolicy(ClaimsEnum.UpdateStudent.ToString(), policy =>
+                {
+                    policy.RequireClaim(ClaimsConstants.UpdateStudent, "True");
+                });
+
+                options.AddPolicy(ClaimsEnum.DeleteStudent.ToString(), policy =>
+                {
+                    policy.RequireClaim(ClaimsConstants.DeleteStudent, "True");
+                });
             });
 
             return services;

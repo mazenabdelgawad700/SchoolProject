@@ -12,7 +12,6 @@ namespace SchoolProject.API.Controllers;
 [Authorize(Roles = nameof(RolesEnum.Admin))]
 public class StudentController : AppControllerBase
 {
-    #region Handle Functions
     [HttpGet(Router.StudentRouting.List)]
     public async Task<IActionResult> GetStudentsAsync()
     {
@@ -54,6 +53,8 @@ public class StudentController : AppControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    [Authorize(Policy = nameof(ClaimsEnum.CreateStudent))]
     [HttpPost(Router.StudentRouting.Create)]
     public async Task<IActionResult> AddStudentAsync([FromBody] AddStudentCommand command)
     {
@@ -67,6 +68,8 @@ public class StudentController : AppControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    [Authorize(Policy = nameof(ClaimsEnum.UpdateStudent))]
     [HttpPut(Router.StudentRouting.Update)]
     public async Task<IActionResult> UpdateStudentAsync([FromBody] EditStudentCommand command)
     {
@@ -80,6 +83,8 @@ public class StudentController : AppControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    [Authorize(Policy = nameof(ClaimsEnum.DeleteStudent))]
     [HttpDelete(Router.StudentRouting.Delete)]
     public async Task<IActionResult> DeleteStudentAsync([FromRoute] int id)
     {
@@ -92,5 +97,4 @@ public class StudentController : AppControllerBase
             throw new Exception(ex.Message);
         }
     }
-    #endregion
 }

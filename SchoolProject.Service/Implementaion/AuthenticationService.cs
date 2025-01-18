@@ -96,8 +96,8 @@ namespace SchoolProject.Service.Implementaion
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
-            //var userClaims = await _userManager.GetClaimsAsync(user);
-            //claims.AddRange(userClaims);
+            var userClaims = await _userManager.GetClaimsAsync(user);
+            claims.AddRange(userClaims);
 
             return claims;
         }
