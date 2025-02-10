@@ -44,13 +44,13 @@ public class ResponseHandler
             Message = message ?? _localizer[LocalizationSharedResourcesKeys.LoginTimeOut]
         };
     }
-    public Response<T> Failed<T>()
+    public Response<T> Failed<T>(string? message = null)
     {
         return new Response<T>()
         {
             StatusCode = HttpStatusCode.ExpectationFailed,
             Succeeded = false,
-            Message = _localizer[LocalizationSharedResourcesKeys.ExpectationFailed]
+            Message = message ?? _localizer[LocalizationSharedResourcesKeys.ExpectationFailed]
         };
     }
     public Response<T> BadRequest<T>(string message = null!)

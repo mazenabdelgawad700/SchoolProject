@@ -213,4 +213,13 @@
   <data name="ErrorDuringUpdatingClaims" xml:space="preserve">
     <value>خطأ أثناء تحديث صلاحيات المستخدم</value>
   </data>
+  <data name="EmailMessageIsRequired" xml:space="preserve">
+    <value>يجب إضافة رسالة البريد الإلكتروني</value>
+  </data>
+  <data name="EmailSentSuccessfully" xml:space="preserve">
+    <value>تم إرسال البريد الإلكتروني بنجاح</value>
+  </data>
+  <data name="InvalidEmailMessage" xml:space="preserve">
+    <value>رسالة غير صالحة</value>
+  </data>
 </root>

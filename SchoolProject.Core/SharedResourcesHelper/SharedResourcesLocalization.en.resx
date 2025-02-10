@@ -213,4 +213,13 @@
   <data name="ErrorDuringUpdatingClaims" xml:space="preserve">
     <value>Error During Updating User Claims</value>
   </data>
+  <data name="EmailMessageIsRequired" xml:space="preserve">
+    <value>Pleae, provide a message to be sent</value>
+  </data>
+  <data name="EmailSentSuccessfully" xml:space="preserve">
+    <value>Email Sent Successfully</value>
+  </data>
+  <data name="InvalidEmailMessage" xml:space="preserve">
+    <value>Invalid Message</value>
+  </data>
 </root>

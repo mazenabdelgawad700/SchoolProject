@@ -34,5 +34,8 @@
         public const string FailedToUpdateClaims = "FailedToUpdateClaims";
         public const string UpdateClaimsSuccessfully = "UpdateClaimsSuccessfully";
         public const string ErrorDuringUpdatingClaims = "ErrorDuringUpdatingClaims";
+        public const string EmailMessageIsRequired = "EmailMessageIsRequired";
+        public const string EmailSentSuccessfully = "EmailSentSuccessfully";
+        public const string InvalidEmailMessage = "InvalidEmailMessage";
     }
 }

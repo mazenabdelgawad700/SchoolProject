@@ -64,6 +64,11 @@
             public const string ManageUserClaims = Prefix + "Claim/Manage-User-Claims/{userId}/";
             public const string UpdateUserClaimsList = Prefix + "Claim/Update/User-Claims/";
         }
-
+        public static class EmailRouting
+        {
+            // Api/V1/Email
+            private const string Prefix = Rule + "Email/";
+            public const string SendEamil = Prefix + "Send-Email/";
+        }
     }
 }

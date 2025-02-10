@@ -12,6 +12,7 @@ public static class ModuleServiceDependancies
         services.AddTransient<IDepartmentService, DepartmentService>();
         services.AddTransient<IAuthenticationService, AuthenticationService>();
         services.AddTransient<IAuthorizationService, AuthorizationService>();
+        services.AddTransient<ISendEmailService, SendEmailService>();
 
         return services;
     }
