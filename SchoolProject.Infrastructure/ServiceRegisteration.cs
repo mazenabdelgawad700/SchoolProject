@@ -43,7 +43,10 @@ namespace SchoolProject.Infrastructure
             services.AddScoped<SignInManager<User>>();
 
             var jwtSettings = new JwtSettings();
+            var emailSettings = new EmailSettings();
+
             configuration.GetSection(nameof(jwtSettings)).Bind(jwtSettings);
+            configuration.GetSection(nameof(emailSettings)).Bind(emailSettings);
 
             services.AddAuthentication(x =>
             {
@@ -67,6 +70,7 @@ namespace SchoolProject.Infrastructure
            });
 
             services.AddSingleton(jwtSettings);
+            services.AddSingleton(emailSettings);
 
             services.AddSwaggerGen(c =>
             {
@@ -98,23 +102,19 @@ namespace SchoolProject.Infrastructure
            });
             });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy(ClaimsEnum.CreateStudent.ToString(), policy =>
+            services.AddAuthorizationBuilder()
+                .AddPolicy(ClaimsEnum.CreateStudent.ToString(), policy =>
                 {
                     policy.RequireClaim(ClaimsConstants.CreateStudent, "True");
-                });
-
-                options.AddPolicy(ClaimsEnum.UpdateStudent.ToString(), policy =>
+                })
+                .AddPolicy(ClaimsEnum.UpdateStudent.ToString(), policy =>
                 {
                     policy.RequireClaim(ClaimsConstants.UpdateStudent, "True");
-                });
-
-                options.AddPolicy(ClaimsEnum.DeleteStudent.ToString(), policy =>
+                })
+                .AddPolicy(ClaimsEnum.DeleteStudent.ToString(), policy =>
                 {
                     policy.RequireClaim(ClaimsConstants.DeleteStudent, "True");
                 });
-            });
 
             return services;
         }

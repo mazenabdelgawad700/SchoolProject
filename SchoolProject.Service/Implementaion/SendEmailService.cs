@@ -1,5 +1,5 @@
 ﻿using MimeKit;
-using SchoolProject.Domain.Constants;
+using SchoolProject.Domain.Helpers;
 using SchoolProject.Service.Abstracts;
 
 
@@ -8,9 +8,14 @@ namespace SchoolProject.Service.Implementaion
     public class SendEmailService : ISendEmailService
     {
         #region Fields
+        private readonly EmailSettings _emailSettings;
         #endregion
 
         #region Constructors
+        public SendEmailService(EmailSettings emailSettings)
+        {
+            _emailSettings = emailSettings;
+        }
         #endregion
 
         #region Actions
@@ -19,12 +24,13 @@ namespace SchoolProject.Service.Implementaion
             try
             {
                 using MailKit.Net.Smtp.SmtpClient client = new();
-                client.Connect("smtp.gmail.com", 587);
-                await client.AuthenticateAsync("mazenahmedsaleh206@gmail.com", EmailConstants.MailPassword);
+                //client.Connect("smtp.gmail.com", 587);
+                await client.ConnectAsync(_emailSettings.ClientConnectionString, _emailSettings.ClientConnectionPort, _emailSettings.ClientConnectionUseSSL);
+                await client.AuthenticateAsync(_emailSettings.AuthenticationEmail, _emailSettings.AuthenticationPassword);
                 BodyBuilder bodyBuilder = new()
                 {
                     HtmlBody = message,
-                    TextBody = "This is my first email by Dot Net"
+                    TextBody = _emailSettings.BodyBuilderTextBody
                 };
 
                 MimeMessage mimeMessage = new()
@@ -32,9 +38,9 @@ namespace SchoolProject.Service.Implementaion
                     Body = bodyBuilder.ToMessageBody(),
                 };
 
-                mimeMessage.From.Add(new MailboxAddress("Future School", "mazenahmedsaleh206@gmail.com"));
-                mimeMessage.To.Add(new MailboxAddress("Future School", email));
-                mimeMessage.Subject = "Welcome to future school";
+                mimeMessage.From.Add(new MailboxAddress(_emailSettings.MailBoxSenderHeader, _emailSettings.AuthenticationEmail));
+                mimeMessage.To.Add(new MailboxAddress(_emailSettings.MailBoxSenderHeader, email));
+                mimeMessage.Subject = _emailSettings.MailBoxSubject;
 
                 await client.SendAsync(mimeMessage);
 
